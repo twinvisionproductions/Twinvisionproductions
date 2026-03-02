@@ -1358,7 +1358,7 @@
         </div>
 <div class="contact-item">
 <span class="contact-item-label">Email</span>
-<a href="/cdn-cgi/l/email-protection#7b091a0813141f0e3b1c161a121755181416"><span class="__cf_email__" data-cfemail="1a687b6972757e6f5a7d777b737634797577">[email protected]</span></a>
+<a href="mailto:rashodu@gmail.com">rashodu@gmail.com</a>
 </div>
 <div class="contact-item">
 <span class="contact-item-label">Projects</span>
@@ -1367,28 +1367,29 @@
 </div>
 </div>
 <div class="contact-right">
-<form action="https://formspree.io/f/rashod@twinvisionproductions.com" class="contact-form reveal reveal-delay-1" method="POST" onsubmit="handleSubmit(event)">
+<form name="contact" class="contact-form reveal reveal-delay-1" method="POST" data-netlify="true">
+<input type="hidden" name="form-name" value="contact"/>
 <div class="form-row">
 <div class="form-field">
 <label class="form-label">First Name</label>
-<input class="form-input" placeholder="First" required="" type="text"/>
+<input class="form-input" name="first-name" placeholder="First" required="" type="text"/>
 </div>
 <div class="form-field">
 <label class="form-label">Last Name</label>
-<input class="form-input" placeholder="Last" required="" type="text"/>
+<input class="form-input" name="last-name" placeholder="Last" required="" type="text"/>
 </div>
 </div>
 <div class="form-field">
 <label class="form-label">Company / Agency</label>
-<input class="form-input" placeholder="Company name" type="text"/>
+<input class="form-input" name="company" placeholder="Company name" type="text"/>
 </div>
 <div class="form-field">
 <label class="form-label">Email</label>
-<input class="form-input" placeholder="your@email.com" required="" type="email"/>
+<input class="form-input" name="email" placeholder="your@email.com" required="" type="email"/>
 </div>
 <div class="form-field">
 <label class="form-label">I am a...</label>
-<select class="form-select">
+<select class="form-select" name="role">
 <option value="">Select one</option>
 <option>Manager</option>
 <option>Agent</option>
@@ -1401,7 +1402,7 @@
 </div>
 <div class="form-field">
 <label class="form-label">Message / Projects of Interest</label>
-<textarea class="form-textarea" placeholder="Which projects are you interested in? Any specific materials you'd like to receive?"></textarea>
+<textarea class="form-textarea" name="message" placeholder="Which projects are you interested in? Any specific materials you'd like to receive?"></textarea>
 </div>
 <button class="form-submit" type="submit">Send Request</button>
 <p class="form-note">All materials are confidential and provided under standard industry terms. We typically respond within 24–48 hours.</p>
@@ -1420,4 +1421,22 @@
 <li><a href="#contact">Contact</a></li>
 </ul>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script></script></body></html>
+<script>
+  /* ─── NAV SCROLL EFFECT ─── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* ─── SCROLL REVEAL ─── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+</script></body></html>
