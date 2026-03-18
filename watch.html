@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch Rent & Go | Twin Vision Productions</title>
+<meta name="description" content="Watch Rent & Go — a 10-episode vertical micro-series created by Rashod Underwood. Free to watch. Support the series to help fund film festivals and Season 2.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0A0A0A; --dark:#111; --card:#161616; --card2:#1C1C1C;
+  --border:#2A2A2A; --gold:#C9A84C; --gold-light:#E8C96A;
+  --white:#F5F5F0; --muted:#888;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(10,10,10,0.96);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.nav-brand{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--gold);letter-spacing:.08em;text-decoration:none;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;height:100%}
+.nav-links li{display:flex;align-items:center;height:100%}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;display:flex;align-items:center}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--black)!important;padding:0 24px;font-weight:700!important;font-size:11px!important;letter-spacing:.12em!important;height:64px;display:flex!important;align-items:center!important;white-space:nowrap;margin-left:8px;transition:background .2s!important}
+.nav-cta:hover{background:var(--gold-light)!important}
+
+/* ── HERO BANNER ── */
+.watch-hero{padding:120px 48px 72px;position:relative;overflow:hidden;background:var(--dark);border-bottom:1px solid var(--border)}
+.watch-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,.06) 0%,transparent 65%)}
+.gold-bar-top{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.watch-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:center;position:relative;z-index:1}
+.watch-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.watch-title{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,5rem);font-weight:700;line-height:1;color:var(--white);margin-bottom:8px}
+.watch-title em{color:var(--gold);font-style:italic}
+.watch-subtitle{font-size:1.1rem;color:var(--muted);margin-bottom:28px;font-family:var(--font-display);font-style:italic}
+.watch-meta{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:36px;padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.watch-meta-item{display:flex;flex-direction:column;gap:3px}
+.watch-meta-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.watch-meta-val{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--white)}
+.watch-desc{color:#aaa;font-size:.95rem;line-height:1.85;margin-bottom:32px;max-width:520px}
+
+/* Support card in hero */
+.support-card{background:var(--card);border:1px solid var(--border);padding:32px;position:relative;overflow:hidden}
+.support-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.support-card-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.support-card h3{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.2}
+.support-card p{color:#999;font-size:.85rem;line-height:1.8;margin-bottom:24px}
+.btn-support{display:block;background:var(--gold);color:var(--black);padding:15px 24px;text-align:center;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;transition:background .2s;width:100%}
+.btn-support:hover{background:var(--gold-light)}
+.support-note{margin-top:14px;font-size:11px;color:var(--muted);text-align:center;line-height:1.6}
+
+/* ── MAIN CONTENT ── */
+.watch-main{max-width:1200px;margin:0 auto;padding:80px 48px}
+
+/* Where to watch strip */
+.where-strip{background:var(--card);border:1px solid var(--border);border-radius:2px;padding:24px 32px;margin-bottom:64px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.where-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);flex-shrink:0}
+.where-platforms{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.platform-pill{background:var(--card2);border:1px solid var(--border);padding:8px 20px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.platform-pill.active{border-color:rgba(201,168,76,.4);color:var(--gold)}
+.where-cta{flex-shrink:0}
+.btn-ghost-sm{background:transparent;color:var(--white);padding:10px 22px;font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border);display:inline-block;transition:all .2s}
+.btn-ghost-sm:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Section headers */
+.ep-section-head{margin-bottom:32px;display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.ep-section-title{font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:700;color:var(--white)}
+.ep-section-tag{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.section-rule{width:60px;height:2px;background:var(--gold);margin:12px 0 40px}
+
+/* Episode list */
+.ep-list{display:flex;flex-direction:column;gap:2px;margin-bottom:80px}
+.ep-row{display:grid;grid-template-columns:64px 1fr auto;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--border);transition:border-color .25s,background .25s;cursor:default}
+.ep-row:hover{border-color:rgba(201,168,76,.35);background:var(--card2)}
+.ep-row.featured{border-color:rgba(201,168,76,.5);background:#1a1500}
+.ep-row.featured:hover{border-color:var(--gold)}
+.ep-num-col{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);padding:20px 0}
+.ep-num{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--gold);letter-spacing:.05em}
+.ep-body{padding:20px 24px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.ep-title-row{display:flex;align-items:center;gap:12px}
+.ep-title{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--white)}
+.ep-badge{background:var(--gold);color:var(--black);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;flex-shrink:0}
+.ep-desc{font-size:.82rem;color:var(--muted);line-height:1.6;margin-top:2px}
+.ep-meta-col{padding:20px 24px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;flex-shrink:0}
+.ep-duration{font-size:11px;color:var(--muted);letter-spacing:.05em}
+.ep-vimeo-link{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(201,168,76,.3);padding:5px 12px;transition:all .2s;white-space:nowrap}
+.ep-vimeo-link:hover{background:rgba(201,168,76,.1);border-color:var(--gold)}
+.ep-vimeo-link.soon{color:var(--muted);border-color:var(--border);pointer-events:none}
+
+/* ── SUPPORT FULL SECTION ── */
+.support-section{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 48px;margin-bottom:80px}
+.support-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.support-left h2{font-family:var(--font-display);font-size:clamp(2rem,3vw,3rem);font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.1}
+.support-left h2 em{color:var(--gold);font-style:italic}
+.support-left p{color:#aaa;font-size:.95rem;line-height:1.85;margin-bottom:20px}
+.support-left .btn-support-lg{display:inline-block;background:var(--gold);color:var(--black);padding:16px 40px;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;transition:background .2s;margin-top:8px}
+.support-left .btn-support-lg:hover{background:var(--gold-light)}
+
+.support-right{display:flex;flex-direction:column;gap:20px}
+.support-tier{background:var(--card);border:1px solid var(--border);padding:24px;display:flex;gap:20px;align-items:flex-start;transition:border-color .25s}
+.support-tier:hover{border-color:rgba(201,168,76,.3)}
+.tier-icon{width:44px;height:44px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.tier-body h4{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--gold);margin-bottom:4px}
+.tier-body p{font-size:.83rem;color:#999;line-height:1.7}
+
+/* ── FOOTER ── */
+footer{padding:48px;border-top:1px solid var(--border);background:var(--dark)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-brand{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:.08em}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{color:var(--muted);font-size:11px;letter-spacing:.05em}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .nav-links li:not(:last-child){display:none}
+  .watch-hero-inner{grid-template-columns:1fr;gap:40px}
+  .watch-hero{padding:100px 24px 56px}
+  .watch-main{padding:56px 24px}
+  .support-inner{grid-template-columns:1fr;gap:40px}
+  .support-section{padding:56px 24px}
+  .ep-row{grid-template-columns:52px 1fr}
+  .ep-meta-col{display:none}
+  .where-strip{flex-direction:column;align-items:flex-start}
+  footer{padding:32px 24px}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-brand" href="index.html">Twin Vision Productions</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="watch.html" style="color:var(--gold)">Watch</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="https://buymeacoffee.com/twinvisionproductions" target="_blank" class="nav-cta">Support the Series</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="watch-hero">
+  <div class="gold-bar-top"></div>
+  <div class="watch-hero-inner">
+    <div>
+      <div class="watch-eyebrow">Now Streaming · Season One</div>
+      <h1 class="watch-title">Rent <em>&amp;</em> Go</h1>
+      <div class="watch-subtitle">A Vertical Micro-Series</div>
+      <div class="watch-meta">
+        <div class="watch-meta-item">
+          <span class="watch-meta-label">Episodes</span>
+          <span class="watch-meta-val">10</span>
+        </div>
+        <div class="watch-meta-item">
+          <span class="watch-meta-label">Format</span>
+          <span class="watch-meta-val">Vertical 9:16</span>
+        </div>
+        <div class="watch-meta-item">
+          <span class="watch-meta-label">Length</span>
+          <span class="watch-meta-val">Under 2 Min</span>
+        </div>
+        <div class="watch-meta-item">
+          <span class="watch-meta-label">Genre</span>
+          <span class="watch-meta-val">Workplace Comedy</span>
+        </div>
+      </div>
+      <p class="watch-desc">Peter Steele never wanted to run his father's rental car company. Now he's managing scammers, entitled customers, and a crew that has no problem testing every last nerve he has. Watch the full season free — and if it moves you, support what comes next.</p>
+    </div>
+
+    <div class="support-card">
+      <div class="support-card-label">Watch Free · Support If You Can</div>
+      <h3>Help us reach the next stage</h3>
+      <p>Every contribution goes toward film festival submissions, Season 2 development, and the Twin Vision Productions original slate. No amount is too small.</p>
+      <a href="https://buymeacoffee.com/twinvisionproductions" target="_blank" class="btn-support">☕ Support the Series</a>
+      <p class="support-note">All 10 episodes are completely free to watch.<br>Contributions support Twin Vision's future projects.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN ── -->
+<div class="watch-main">
+
+  <!-- Where to watch -->
+  <div class="where-strip">
+    <span class="where-label">Watch On</span>
+    <div class="where-platforms">
+      <div class="platform-pill active">▶ &nbsp;Vimeo</div>
+      <div class="platform-pill active">▶ &nbsp;YouTube Shorts</div>
+      <div class="platform-pill active">▶ &nbsp;Instagram Reels</div>
+      <div class="platform-pill active">▶ &nbsp;TikTok</div>
+    </div>
+    <div class="where-cta">
+      <a href="https://buymeacoffee.com/twinvisionproductions" target="_blank" class="btn-ghost-sm">Support the Series →</a>
+    </div>
+  </div>
+
+  <!-- Episode list -->
+  <div class="ep-section-head">
+    <h2 class="ep-section-title">Season One — Episode Guide</h2>
+    <span class="ep-section-tag">10 Episodes</span>
+  </div>
+  <div class="section-rule"></div>
+
+  <div class="ep-list">
+
+    <!-- EP 01 -->
+    <div class="ep-row featured">
+      <div class="ep-num-col"><span class="ep-num">01</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row">
+          <span class="ep-title">The Family Business</span>
+          <span class="ep-badge">Now Playing</span>
+        </div>
+        <span class="ep-desc">Peter Steele never wanted to run his father's rental car company. His father gets injured and disappears — leaving Peter holding the keys to a business he never asked for.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="https://buymeacoffee.com/twinvisionproductions" target="_blank" class="ep-vimeo-link">Watch Now →</a>
+      </div>
+    </div>
+
+    <!-- EP 02 -->
+    <div class="ep-row">
+      <div class="ep-num-col"><span class="ep-num">02</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row"><span class="ep-title">The Customer Ain't Always Right</span></div>
+        <span class="ep-desc">At Rent &amp; Go, the customer thinks they're always right. Peter learns that being right and being in charge aren't always the same thing.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="#" class="ep-vimeo-link soon">Coming Soon</a>
+      </div>
+    </div>
+
+    <!-- EP 03 -->
+    <div class="ep-row">
+      <div class="ep-num-col"><span class="ep-num">03</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row"><span class="ep-title">The Fraudulent Call</span></div>
+        <span class="ep-desc">Gigi from Get Money Bank calls the shop. She needs a card number. Peter has to figure out what's real before it's too late.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="#" class="ep-vimeo-link soon">Coming Soon</a>
+      </div>
+    </div>
+
+    <!-- EP 04 -->
+    <div class="ep-row">
+      <div class="ep-num-col"><span class="ep-num">04</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row"><span class="ep-title">Are You VIP?</span></div>
+        <span class="ep-desc">Big Mike pulls up expecting the red carpet. At Rent &amp; Go, VIP stands for Very Important Person — and Big Mike has decided that is exactly what he is.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="#" class="ep-vimeo-link soon">Coming Soon</a>
+      </div>
+    </div>
+
+    <!-- EP 05 -->
+    <div class="ep-row">
+      <div class="ep-num-col"><span class="ep-num">05</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row"><span class="ep-title">Who's Your Insurance?</span></div>
+        <span class="ep-desc">A customer returns a car claiming the damage was already there. It's one of the oldest moves in the game — and Rent &amp; Go has seen it before.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="#" class="ep-vimeo-link soon">Coming Soon</a>
+      </div>
+    </div>
+
+    <!-- EP 06 -->
+    <div class="ep-row">
+      <div class="ep-num-col"><span class="ep-num">06</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row"><span class="ep-title">Unethical Behavior</span></div>
+        <span class="ep-desc">The contract exists for a reason. Specifically the no-damage section. A customer who skipped that part is about to find out why every word matters.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="#" class="ep-vimeo-link soon">Coming Soon</a>
+      </div>
+    </div>
+
+    <!-- EP 07 -->
+    <div class="ep-row">
+      <div class="ep-num-col"><span class="ep-num">07</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row"><span class="ep-title">Time is Money</span></div>
+        <span class="ep-desc">Gusty and Big Mike's mom is fed up with her grown sons not working. Gusty is thinking about Rent &amp; Go. Big Mike doesn't agree.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="#" class="ep-vimeo-link soon">Coming Soon</a>
+      </div>
+    </div>
+
+    <!-- EP 08 -->
+    <div class="ep-row">
+      <div class="ep-num-col"><span class="ep-num">08</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row"><span class="ep-title">Get A Job</span></div>
+        <span class="ep-desc">Peter needs new talent at Rent &amp; Go and stumbles upon Gusty — a local hustler who sells out of the back of his car.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="#" class="ep-vimeo-link soon">Coming Soon</a>
+      </div>
+    </div>
+
+    <!-- EP 09 -->
+    <div class="ep-row">
+      <div class="ep-num-col"><span class="ep-num">09</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row"><span class="ep-title">Gusty's First Day</span></div>
+        <span class="ep-desc">Gusty shows up ready to work. The question is whether Rent &amp; Go — or Peter — is ready for him.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="#" class="ep-vimeo-link soon">Coming Soon</a>
+      </div>
+    </div>
+
+    <!-- EP 10 -->
+    <div class="ep-row">
+      <div class="ep-num-col"><span class="ep-num">10</span></div>
+      <div class="ep-body">
+        <div class="ep-title-row">
+          <span class="ep-title">Do You Want Insurance?</span>
+          <span class="ep-badge" style="background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold)">Season Finale</span>
+        </div>
+        <span class="ep-desc">Every customer thinks charm is a discount. At Rent &amp; Go there is only one question. One question only.</span>
+      </div>
+      <div class="ep-meta-col">
+        <span class="ep-duration">Under 2 min</span>
+        <a href="#" class="ep-vimeo-link soon">Coming Soon</a>
+      </div>
+    </div>
+
+  </div><!-- /ep-list -->
+
+</div><!-- /watch-main -->
+
+<!-- ── SUPPORT SECTION ── -->
+<section class="support-section">
+  <div class="support-inner">
+    <div class="support-left">
+      <h2>Support <em>What Comes Next</em></h2>
+      <p>Rent &amp; Go is completely free to watch. If the series moves you — if it makes you laugh, if it feels like something real — consider supporting what comes next.</p>
+      <p>Every contribution goes directly toward film festival submissions, the development of Season 2, and the continued growth of Twin Vision Productions' original slate of 18 projects.</p>
+      <p style="color:var(--gold);font-size:.88rem;letter-spacing:.05em">No amount is too small. Every dollar is a vote for more stories like this one.</p>
+      <a href="https://buymeacoffee.com/twinvisionproductions" target="_blank" class="btn-support-lg">☕ &nbsp;Support on Buy Me a Coffee</a>
+    </div>
+    <div class="support-right">
+      <div class="support-tier">
+        <div class="tier-icon">🎬</div>
+        <div class="tier-body">
+          <h4>Festival Submissions</h4>
+          <p>Each festival entry costs $25–$75. Your support helps Rent &amp; Go reach ABFF, Urbanworld, BronzeLens, BlackStar, and beyond.</p>
+        </div>
+      </div>
+      <div class="support-tier">
+        <div class="tier-icon">✍🏾</div>
+        <div class="tier-body">
+          <h4>Season 2 Development</h4>
+          <p>Scripts, production, crew, equipment — everything that makes Season 2 happen starts with the community behind Season 1.</p>
+        </div>
+      </div>
+      <div class="support-tier">
+        <div class="tier-icon">🏢</div>
+        <div class="tier-body">
+          <h4>Twin Vision Original Slate</h4>
+          <p>18 original projects in development. Comedy, drama, thriller, animation. Your support helps all of them move forward.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Twin Vision Productions</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="watch.html">Watch</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://buymeacoffee.com/twinvisionproductions" target="_blank">Support</a>
+    </div>
+    <span class="footer-copy">© 2026 Twin Vision Productions LLC</span>
+  </div>
+</footer>
+
+</body>
+</html>
